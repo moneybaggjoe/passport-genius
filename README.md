@@ -50,7 +50,7 @@ app.get('/auth/example',
   passport.authenticate('genius'));
 
 app.get('/auth/example/callback',
-  passport.authenticate('oauth2', { failureRedirect: '/login' }),
+  passport.authenticate('genius', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
