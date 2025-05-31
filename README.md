@@ -8,7 +8,7 @@ This module extends [passport-oauth2](https://www.passportjs.org/packages/passpo
 
 ## Audience
 
-Developers can plug this library into any Node.js application or framework that supports [Connect](https://github.com/senchalabs/connect#readme)-style middleware, including [Express](https://expressjs.com/). The Genius strategy serves as a user authentication method for [social login](https://en.wikipedia.org/wiki/Social_login), which eliminates the need for developers to manage usernames and passwords.
+Developers can plug this library into any Node.js application or framework that supports [Connect](https://github.com/senchalabs/connect#readme)-style middleware, including [Express](https://expressjs.com/). The Genius strategy serves as a user authentication method for [social login](https://en.wikipedia.org/wiki/Social_login), which eliminates the need to manage usernames and passwords.
 
 ## Install
 
@@ -17,12 +17,11 @@ Developers can plug this library into any Node.js application or framework that 
 ## Usage
 
 
-
 #### Register Application
 
 Before your application can make use of Genius's authentication system, you must first [register your application](https://docs.genius.com/#/getting-started-h1). Visit the Genius [API Client management page](https://genius.com/api-clients) and create an API client.
 
-After registration, Genius will issue your client ID and secret, which are used by Genius to identify your app. You will also need to configure a redirect URI, which matches the callback route in your application.
+After registration, Genius will issue your client ID and secret, which are used to identify your app. You will also need to configure a redirect URI, which matches the callback route in your application.
 
 #### Configure Strategy
 
@@ -43,6 +42,19 @@ passport.use(new GeniusStrategy({
     cb(null, profile);
   }
 ));
+```
+
+#### Scopes
+
+Your application can request one or more [scopes](https://docs.genius.com/#/authentication-h1:~:text=client%2Donly%20application%3F-,Available%20Scopes,-Access%20tokens%20can) using the `scope` option. If no scope is provided, the Genius strategy defaults to the `me` scope. Use a string array to supply multiple scopes. 
+
+```js
+passport.use(new GeniusStrategy({
+    scope: 'create_annotation', 
+    // scope: ['manage_annotation', 'vote'],
+    clientID: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    ...
 ```
 
 #### Authenticate Requests
