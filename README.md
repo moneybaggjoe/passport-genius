@@ -1,6 +1,14 @@
 # passport-genius
 
-OAuth 2.0 authentication strategy for the [Genius API](https://docs.genius.com).
+OAuth 2.0 authentication strategy for [Genius](https://genius.com/).
+
+## Overview
+
+This module extends [passport-oauth2](https://www.passportjs.org/packages/passport-oauth2/). It enables users to sign into third-party websites and apps using their Genius account.
+
+## Audience
+
+Developers can plug this library into any Node.js application or framework that supports [Connect](https://github.com/senchalabs/connect#readme)-style middleware, including [Express](https://expressjs.com/). The Genius strategy serves as a user authentication method for [social login](https://en.wikipedia.org/wiki/Social_login), which eliminates the need for developers to manage usernames and passwords.
 
 ## Install
 
@@ -8,13 +16,13 @@ OAuth 2.0 authentication strategy for the [Genius API](https://docs.genius.com).
 
 ## Usage
 
+
+
 #### Register Application
 
-The Genius strategy authenticates users using their Genius account.  Before
-your application can make use of Genius's authentication system, you must
-first [register](https://genius.com/api-clients) an API Client.  Once registered, a client ID and secret will be issued which are used
-by Genius to identify your app.  You will also need to configure a redirect
-URI which matches the route in your application.
+Before your application can make use of Genius's authentication system, you must first [register your application](https://docs.genius.com/#/getting-started-h1). Visit the Genius [API Client management page](https://genius.com/api-clients) and create an API client.
+
+After registration, Genius will issue your client ID and secret, which are used by Genius to identify your app. You will also need to configure a redirect URI, which matches the callback route in your application.
 
 #### Configure Strategy
 
@@ -24,7 +32,7 @@ its OAuth 2.0 redirect endpoint.
 
 ```js
 const passport = require('passport');
-const GeniusStrategy = require('./passport-genius');
+const GeniusStrategy = require('passport-genius');
 
 passport.use(new GeniusStrategy({
     clientID: CLIENT_ID,
@@ -57,10 +65,6 @@ app.get('/auth/example/callback',
   });
 ```
 
-## Related Modules
-
-- [passport-oauth2](https://github.com/jaredhanson/passport-oauth2) — OAuth 2.0 authentication strategy
-
 ## License
 
-[The MIT License](http://opensource.org/licenses/MIT)
+[MIT](https://github.com/moneybaggjoe/passport-genius?tab=MIT-1-ov-file)
